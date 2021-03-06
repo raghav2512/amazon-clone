@@ -15,7 +15,7 @@ import Orders from "./Orders";
 import "./App.css";
 
 const promise = loadStripe(
-  "pk_test_51IPWMzJfLFuQzk82WTwTtS836cMTEHCaZSx9LGCBA8YwB12kFZi9Hq33peppojwOhc2TRuPZYoYvOUBr7MIvPonu00aLPcq3js"
+  // Stripe publishable key here
 );
 
 function App() {

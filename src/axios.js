@@ -2,7 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   // The API (cloud function) URL after running cloud function
-  baseURL: "https://us-central1-challenge-a297f.cloudfunctions.net/api",
+  baseURL: "",
   // "http://localhost:5001/challenge-a297f/us-central1/api", -> for local emulator
 });
 

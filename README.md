@@ -1,70 +1,69 @@
-# Getting Started with Create React App
+# Demo App
+[https://challenge-a297f.web.app/] (https://challenge-a297f.web.app/)
+Click the link to checkout the demo version of the running app hosted on Firebase cloud servers
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project stack
+This amazon clone has been created in js through and through. At the front end React has been used. For state management Context Api has been used.  The backend is inside the functions folder. Backend has been created with node and express.
+
+## [Frontend]
 
 ## Available Scripts
 
 In the project directory, you can run:
+
+### `npm install`
+
+This command will load the required dependencies for the front end and backend. You need to run it in the main folder as well as inside the amazonclone/functions folder in the console.
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This will help you get started. Run this in the main folder to view frontend at the port 3000.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Use this command in the console to build the frontend. This same build will be used to host on the firebase server.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## [Backend]
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+We use Google firebase for hosting frontend, hosting backend ,and for hosting datastore servers. Firebase provides ease of use and full cloud functionality. First create an account in Firebase. Create a project. The project's  
 
-### `npm run eject`
+### `firebase init`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Use this command to get started with firebase for backend functionality.  
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Configure firestore, functions and hosting.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### `firebase emulators:start`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+This will emulate and start the backend in the localhost. Use the same path in axios file to hit your local services and for debugging prposes,. Change it after deployment
 
-## Learn More
+### `firebase deploy --only functions`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+This command will deploy your backend services to firebase server. Use the server url in axios file
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### `firebase deploy --only hosting`
 
-### Code Splitting
+This will deploy your front end. Use the url which you will see in the firebase console.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Authentication
 
-### Analyzing the Bundle Size
+The authentication has also been done using firebase
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Payment fuctionality
 
-### Making a Progressive Web App
+For payments you will have to create a Stripe account. Use the keys provided in the functions  
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+## Changes required in the files to get the app running:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+ 1) Go to firebase-> app settings. Copy full firebaseConfig json from there and paste in firebase.js
 
-### Deployment
+ 2) Do [firebase deploy --only functions] to deploy backend and copy the hosted url from the console and put it in axios.js baseUrl. You can also do [firebase emulators:start] to start backend services locally and use the local url in the baseUrl to debug in local
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+ 3) For stripe payment functionality-> for dev environment use the Api keys from stripe homepage. Use publishable key in App.js loadStripe("") as a string. Use the secret key in functions/index.js require("stripe")("") as string 
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+ *Inspired from Sonny Sangha's project
