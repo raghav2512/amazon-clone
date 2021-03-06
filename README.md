@@ -52,7 +52,7 @@ This will deploy your front end. Use the url which you will see in the firebase 
 
 The authentication has also been done using firebase
 
-## Payment fuctionality
+## Payment functionality
 
 For payments you will have to create a Stripe account. Use the keys provided in the functions  
 
